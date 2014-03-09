@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="/Content/kendo/kendo.common.min.css" rel="stylesheet" />
+    <link href="/Content/kendo/kendo.default.min.css" rel="stylesheet" 
+/>
+    <link href="/Content/KendoDataWiz/kendo.dataviz.css" 
+rel="stylesheet" />
+    <link href="/Content/KendoDataWiz/kendo.dataviz.default.css" 
+rel="stylesheet" />
+    <!-- jQuery JavaScript -->
+    <script src="/Scripts/jquery-2.1.0.min.js"></script>
+    <!-- Kendo UI Web combined JavaScript -->
+    <script src="/Scripts/kendo/kendo.web.min.js"></script>
+    <script src="/Scripts/KendoDataWiz/kendo.dataviz.js"></script>
+    <script 
+src="/Scripts/skyelp/skyelp.kendo.ui.remote-chart.js"></script>
+</head>
+<body>
+    <div id="example" class="k-content">
+        <div class="chart-wrapper">
+            <div id="chart" style="background: center no-repeat 
+url('../../content/shared/styles/world-map.png'); width: 800px; 
+height:400px;"></div>
+        </div>
+        <script>
+            function createChart() {
+                $("#chart").kendoChart({
+                    title: {
+                        text: "Road Profile, AM, HLR, Manual",
+                        position: "bottom"
+                    },
+                    legend: {
+                        position: "bottom"
+                    },
+                    chartArea: {
+                        background: ""
+                    },
+                    seriesDefaults: {
+                        type: "line",
+                        style: "smooth",
+                        markers: {
+                            visible: false
+                        }
+                    },
+                    series: [{
+                        name: "Ground Profile",
+                        data: [311.8525, 313.2675, 314.43, 314.77, 
+314.4525, 314.0825, 313.755, 313.615, 313.3175, 312.4075, 311.4975, 
+311.185, 311.5375, 312.295, 313.0975, 313.9125, 314.795, 315.96, 
+317.355, 318.46, 319.04, 319.0725, 318.37, 317.2825, 316.6175, 316.51, 
+316.6575, 316.445, 315.43, 314.395, 314.225, 314.359909, 314.349818, 
+314.590078, 315.012746, 315.720156, 316.502915, 317.080324, 317.929716, 
+318.922046, 319.599726, 319.689909, 319.47, 319.64, 319.82, 319.36, 
+318.785, 318.3075, 317.575, 317.2175],
+                        color: "green",
+                        type: "area"
+                    }, {
+                        name: "Manual Road Profile",
+                        data: [311.75, 311.9, 312.1, 312.25, 312.4, 
+312.55, 312.7, 312.9, 313.05, 313.2, 313.4, 313.55, 313.7, 313.85, 314, 
+314.2, 314.35, 314.5, 314.7, 314.85, 315, 315.15, 315.3, 315.5, 315.65, 
+315.8, 316, 316.15, 316.3, 316.45, 316.6, 316.8, 316.95, 317.1, 317.25, 
+317.4, 317.6, 317.75, 317.9, 318.1, 318.25, 318.4, 318.55, 318.7, 318.9, 
+319.05, 319.2, 319.4, 319.55, 319.7],
+                        color: "#ffa500"
+                    }, {
+                        name: "Road Profile by Moreb",
+                        data: [312.612089, 313.520696, 314.304133, 
+314.649081, 314.416711, 314.041763, 313.926175, 313.76711, 313.207025, 
+312.374346, 311.555755, 311.185, 311.562407, 312.307558, 313.012496, 
+313.839845, 314.997523, 316.304042, 317.496519, 318.375904, 318.789578, 
+318.706816, 318.186196, 317.5216, 317.003363, 316.672316, 316.464072, 
+316.142866, 315.536627, 314.899428, 314.514095, 314.352322, 314.342254, 
+314.548966, 315.031826, 315.69044, 316.412825, 317.200422, 318.050038, 
+318.826545, 319.389836, 319.711842, 319.807521, 319.751908, 319.605709, 
+319.312243, 318.827109, 318.272432, 317.793587, 317.462431]
+                        , color: "#ff0000"
+                    }, {
+                        name: "Road Rrofile by HLR",
+                        data: [312.589177, 313.462821, 314.240605, 
+314.618283, 314.424746, 314.054746, 313.888767, 313.684354, 313.141259, 
+312.351011, 311.552838, 311.185, 311.562972, 312.312075, 313.02419, 
+313.847587, 314.979771, 316.258804, 317.442278, 318.325342, 318.74507, 
+318.668676, 318.153203, 317.484869, 316.949673, 316.603573, 316.397063, 
+316.088822, 315.497888, 314.876556, 314.506696, 314.355222, 314.345131, 
+314.53871, 314.998426, 315.648166, 316.393879, 317.208321, 318.057712, 
+318.815299, 319.356074, 319.654989, 319.729139, 319.664247, 319.52967, 
+319.260664, 318.801401, 318.265813, 317.794302, 317.463386]
+                        , color: "blue"
+                    }],
+                    valueAxis: {
+                        majorGridLines: {
+                            visible: true
+                        },
+                        min: 310,
+                        max: 320
+
+                    },
+                    categoryAxis: {
+                        categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 
+12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 
+30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 
+48, 49, 50],
+                        majorGridLines: {
+                            visible: true
+                        },
+                        labels: {
+                            step:2
+                        }
+
+                    },
+                    tooltip: {
+                        visible: true,
+                        format: "{0}",
+                        template: "#= series.name #: #= value #"
+                    }
+                });
+            }
+
+            $(document).ready(function () {
+                var _categories = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 
+12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 
+30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 
+48, 49, 50];
+                var _ground_data = [311.8525, 313.2675, 314.43, 314.77, 
+314.4525, 314.0825, 313.755, 313.615, 313.3175, 312.4075, 311.4975, 
+311.185, 311.5375, 312.295, 313.0975, 313.9125, 314.795, 315.96, 
+317.355, 318.46, 319.04, 319.0725, 318.37, 317.2825, 316.6175, 316.51, 
+316.6575, 316.445, 315.43, 314.395, 314.225, 314.359909, 314.349818, 
+314.590078, 315.012746, 315.720156, 316.502915, 317.080324, 317.929716, 
+318.922046, 319.599726, 319.689909, 319.47, 319.64, 319.82, 319.36, 
+318.785, 318.3075, 317.575, 317.2175];
+                var _manual_data = [311.75, 311.9, 312.1, 312.25, 312.4, 
+312.55, 312.7, 312.9, 313.05, 313.2, 313.4, 313.55, 313.7, 313.85, 314, 
+314.2, 314.35, 314.5, 314.7, 314.85, 315, 315.15, 315.3, 315.5, 315.65, 
+315.8, 316, 316.15, 316.3, 316.45, 316.6, 316.8, 316.95, 317.1, 317.25, 
+317.4, 317.6, 317.75, 317.9, 318.1, 318.25, 318.4, 318.55, 318.7, 318.9, 
+319.05, 319.2, 319.4, 319.55, 319.7];
+                var _am_data = [312.612089, 313.520696, 314.304133, 
+314.649081, 314.416711, 314.041763, 313.926175, 313.76711, 313.207025, 
+312.374346, 311.555755, 311.185, 311.562407, 312.307558, 313.012496, 
+313.839845, 314.997523, 316.304042, 317.496519, 318.375904, 318.789578, 
+318.706816, 318.186196, 317.5216, 317.003363, 316.672316, 316.464072, 
+316.142866, 315.536627, 314.899428, 314.514095, 314.352322, 314.342254, 
+314.548966, 315.031826, 315.69044, 316.412825, 317.200422, 318.050038, 
+318.826545, 319.389836, 319.711842, 319.807521, 319.751908, 319.605709, 
+319.312243, 318.827109, 318.272432, 317.793587, 317.462431];
+                var _hlr_data = [312.589177, 313.462821, 314.240605, 
+314.618283, 314.424746, 314.054746, 313.888767, 313.684354, 313.141259, 
+312.351011, 311.552838, 311.185, 311.562972, 312.312075, 313.02419, 
+313.847587, 314.979771, 316.258804, 317.442278, 318.325342, 318.74507, 
+318.668676, 318.153203, 317.484869, 316.949673, 316.603573, 316.397063, 
+316.088822, 315.497888, 314.876556, 314.506696, 314.355222, 314.345131, 
+314.53871, 314.998426, 315.648166, 316.393879, 317.208321, 318.057712, 
+318.815299, 319.356074, 319.654989, 319.729139, 319.664247, 319.52967, 
+319.260664, 318.801401, 318.265813, 317.794302, 317.463386];
+                $('#btn-render').click(function () {
+                    var chart_height = $("#config-chart-height");
+                    var title = $("#config-title");
+                    var chart_width = $("#chart-width");
+                    var x_axis_line = $("#x-axis-line");
+                    var x_axis_step = $("#x-axis-step");
+                    var y_axis_line = $("#y-axis-line");
+                    var y_axis_min = $("#y-axis-min");
+                    var y_axis_max = $("#y-axis-max");
+                    
+                    var ground_title = $("#config-ground-title");
+                    var ground_radio = $('input[name=r1]:checked');
+                    var ground_color = $('#config-ground-color');
+                    var ground_visible = $('#ground-visible');
+                    var hlr_title = $("#config-hlr-title");
+                    var hlr_radio = $('input[name=radio-hlr]:checked');
+                    var hlr_color = $('#config-hlr-color');
+                    var hlr_visible = $('#hlr-visible');
+                    var manual_title = $("#config-manual-title");
+                    var manual_radio = 
+$('input[name=radio-manual]:checked');
+                    var manual_color = $('#config-manual-color');
+                    var manual_visible = $('#manual-visible');
+                    var am_title = $("#config-am-title");
+                    var am_radio = $('input[name=radio-am]:checked');
+                    var am_color = $('#config-am-color');
+                    var am_visible = $('#am-visible');
+                    $("#chart").height(chart_height.val());
+                    $("#chart").width(chart_width.val());
+                    var chart = $("#chart").data("kendoChart");
+                   
+                    var _series = [];
+                    if (ground_visible.prop('checked')) {
+                        _series.push({
+                            name: ground_title.val(),
+                            data: _ground_data,
+                            color: ground_color.val(),
+                            type: ground_radio.val()
+
+                        });
+                    }
+                    if (am_visible.prop('checked')) {
+                        _series.push({
+                            name: am_title.val(),
+                            data: _am_data,
+                            color: am_color.val(),
+                            type: am_radio.val()
+
+                        });
+                    }
+                    if (hlr_visible.prop('checked')) {
+                        _series.push({
+                            name: hlr_title.val(),
+                            data: _hlr_data,
+                            color: hlr_color.val(),
+                            type: hlr_radio.val()
+
+                        });
+                    }
+                   
+                    if (manual_visible.prop('checked')) {
+                        _series.push({
+                            name: manual_title.val(),
+                            data: _manual_data,
+                            color: manual_color.val(),
+                            type: manual_radio.val()
+
+                        });
+                    }
+                    chart.setOptions({
+                        series: _series
+                    });
+                    chart.setOptions({ categoryAxis: { categories: 
+_categories, labels: { step: parseInt(x_axis_step.val()) }, 
+majorGridLines: { visible: x_axis_line.prop('checked') } } });
+                    chart.setOptions({ valueAxis: { min: 
+parseFloat(y_axis_min.val()), max: parseFloat(y_axis_max.val()), 
+majorGridLines: { visible: y_axis_line.prop('checked') } } });
+                    chart.setOptions({
+                        title: {
+                            text: title.val(),
+                            position: "bottom"
+                        }
+                    });
+                    chart.redraw();
+                });
+                createChart();
+            });
+            $(document).bind("kendo:skinChange", createChart);
+        </script>
+    </div>
+    <div>
+        <input type="button" id="btn-render" value="Render" />
+        <h3>Config</h3>
+        <ul>
+            <li>Basic:
+                <ul>
+                    <li>Title <input type="text" id="config-title" 
+value="Road Profile, AM, HLR, Manual" /></li>
+                    <li>Height <input type="text" 
+id="config-chart-height" value="400" /></li>
+                    <li>Width <input type="text" id="chart-width" 
+value="800" /></li>
+                    <li>X-Axis Line <input type="checkbox" 
+checked="checked" id="x-axis-line" /></li>
+                    <li>X-Axis Step <input type="text" value="2" 
+id="x-axis-step" /></li>
+                    
+                    <li>Y-Axis Line <input type="checkbox" 
+checked="checked" id="y-axis-line" /></li>
+                    <li>Y-Axis Min <input type="text" value="310" 
+id="y-axis-min" /></li>
+                    <li>Y-Axis Max <input type="text" value="320" 
+id="y-axis-max" /></li>
+                </ul>   
+            </li>
+            <li>
+                Ground Profile:
+                <ul>
+                    <li>Visible <input type="checkbox" checked="checked" 
+id="ground-visible" /></li>
+                    <li>Title <input type="text" 
+id="config-ground-title" value="Ground Profile" /></li>
+                    <li>Color <input type="text" 
+id="config-ground-color" value="green" /></li>
+                    <li> Type
+                        <input type="radio" name="r1" value="area" 
+checked="checked"> Area
+                        <input type="radio" name="r1" value="line" > 
+Line
+                    </li>
+                </ul>
+            </li>
+            <li>
+                HLR Profile:
+                <ul>
+                    <li>Visible <input type="checkbox" checked="checked" 
+id="hlr-visible" /></li>
+                    <li>Title <input type="text" id="config-hlr-title" 
+value="Road Profile by HLR" /></li>
+                    <li>Color <input type="text" id="config-hlr-color" 
+value="blue" /></li>
+                    <li>
+                        Type
+                        <input type="radio" name="radio-hlr" 
+value="area"> Area
+                        <input type="radio" name="radio-hlr" 
+value="line" checked="checked"> Line
+                    </li>
+                </ul>
+            </li>
+            <li>
+                AM Profile:
+                <ul>
+                    <li>Visible <input type="checkbox" checked="checked" 
+id="am-visible" /></li>
+                    <li>Title <input type="text" id="config-am-title" 
+value="Road Profile by Moreb" /></li>
+                    <li>Color <input type="text" id="config-am-color" 
+value="#ff0000" /></li>
+                    <li>
+                        Type
+                        <input type="radio" name="radio-am" 
+value="area"> Area
+                        <input type="radio" name="radio-am" value="line" 
+checked="checked"> Line
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Manual Profile:
+                <ul>
+                    <li>Visible <input type="checkbox" checked="checked" 
+id="manual-visible" /></li>
+                    <li>Title <input type="text" 
+id="config-manual-title" value="Manual Road Profile" /></li>
+                    <li>Color <input type="text" 
+id="config-manual-color" value="#ffa500" /></li>
+                    <li>
+                        Type
+                        <input type="radio" name="radio-manual" 
+value="area"> Area
+                        <input type="radio" name="radio-manual" 
+value="line" checked="checked"> Line
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        
+    </div>
+
+</body>
+</html>
+
